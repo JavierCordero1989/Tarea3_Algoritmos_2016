@@ -29,6 +29,7 @@ public class FRM_Seleccion extends javax.swing.JDialog
         this.parent = parent;
         
         setLocationRelativeTo(null);
+        setTitle("Algoritmo de ordenamiento por Seleccion");
         arregloDatos = parent.devolverArreglo();
         
         llenarArregloEtiquetas();

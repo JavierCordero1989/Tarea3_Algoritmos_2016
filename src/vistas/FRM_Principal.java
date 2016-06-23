@@ -88,6 +88,7 @@ public class FRM_Principal extends javax.swing.JFrame
         radioBoton_Merge = new javax.swing.JRadioButton();
         radioBoton_Quicksort = new javax.swing.JRadioButton();
         btn_Ver = new javax.swing.JButton();
+        radioBoton_Burbuja = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,23 +117,29 @@ public class FRM_Principal extends javax.swing.JFrame
             }
         });
 
+        grupoBotones.add(radioBoton_Burbuja);
+        radioBoton_Burbuja.setText("Burbuja");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(150, 150, 150)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(radioBoton_Seleccion)
-                    .addComponent(radioBoton_Intercambio)
-                    .addComponent(radioBoton_Shell)
-                    .addComponent(radioBoton_Merge)
-                    .addComponent(radioBoton_Quicksort)
-                    .addComponent(btn_Ver))
-                .addContainerGap(150, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(label_Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(label_Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(radioBoton_Burbuja)
+                            .addComponent(radioBoton_Seleccion)
+                            .addComponent(radioBoton_Intercambio)
+                            .addComponent(radioBoton_Shell)
+                            .addComponent(radioBoton_Merge)
+                            .addComponent(radioBoton_Quicksort)
+                            .addComponent(btn_Ver))
+                        .addGap(0, 144, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -151,8 +158,10 @@ public class FRM_Principal extends javax.swing.JFrame
                 .addGap(18, 18, 18)
                 .addComponent(radioBoton_Quicksort)
                 .addGap(18, 18, 18)
+                .addComponent(radioBoton_Burbuja)
+                .addGap(18, 18, 18)
                 .addComponent(btn_Ver)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -180,6 +189,11 @@ public class FRM_Principal extends javax.swing.JFrame
         if(radioBoton_Merge.isSelected())
         {
             
+        }
+        if(radioBoton_Burbuja.isSelected())
+        {
+            FRM_Burbuja burbuja = new FRM_Burbuja(this, true);
+            burbuja.setVisible(true);
         }
     }//GEN-LAST:event_btn_VerActionPerformed
 
@@ -222,6 +236,7 @@ public class FRM_Principal extends javax.swing.JFrame
     private javax.swing.JButton btn_Ver;
     private javax.swing.ButtonGroup grupoBotones;
     private javax.swing.JLabel label_Titulo;
+    private javax.swing.JRadioButton radioBoton_Burbuja;
     private javax.swing.JRadioButton radioBoton_Intercambio;
     private javax.swing.JRadioButton radioBoton_Merge;
     private javax.swing.JRadioButton radioBoton_Quicksort;

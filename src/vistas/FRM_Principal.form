@@ -28,20 +28,25 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="radioBoton_Seleccion" min="-2" max="-2" attributes="0"/>
-                  <Component id="radioBoton_Intercambio" min="-2" max="-2" attributes="0"/>
-                  <Component id="radioBoton_Shell" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="radioBoton_Merge" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="radioBoton_Quicksort" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_Ver" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="label_Titulo" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="radioBoton_Burbuja" min="-2" max="-2" attributes="0"/>
+                          <Component id="radioBoton_Seleccion" min="-2" max="-2" attributes="0"/>
+                          <Component id="radioBoton_Intercambio" min="-2" max="-2" attributes="0"/>
+                          <Component id="radioBoton_Shell" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="radioBoton_Merge" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="radioBoton_Quicksort" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_Ver" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="144" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="150" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="label_Titulo" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -62,8 +67,10 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="radioBoton_Quicksort" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="radioBoton_Burbuja" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btn_Ver" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="50" max="32767" attributes="0"/>
+              <EmptySpace pref="14" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -122,6 +129,14 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_VerActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="radioBoton_Burbuja">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="grupoBotones"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Burbuja"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
