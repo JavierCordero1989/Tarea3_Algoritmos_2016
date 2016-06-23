@@ -5,7 +5,6 @@
  */
 package vistas;
 
-import com.sun.imageio.plugins.jpeg.JPEG;
 import hilos.Hilo_Ejecucion;
 import javax.swing.JLabel;
 

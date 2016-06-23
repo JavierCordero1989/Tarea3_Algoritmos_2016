@@ -10,13 +10,30 @@ import javax.swing.JLabel;
  */
 public class Seleccion 
 {
+    /**
+     * Instancia del Hilo de ejecucion para controlar el tiempo de cambio de las
+     * etiquetas de la interfaz que realiza el cambio grafico.
+     */
     private Hilo_Ejecucion hilo;
     
+    /**
+     * Recibe como parametro el hilo de ejecucion, y lo iguala a una instancia propia
+     * dentro de esta clase.
+     * @param hilo 
+     */
     public Seleccion(Hilo_Ejecucion hilo)
     {
         this.hilo = hilo;
     }/*Fin del constructor.*/
     
+    /**
+     * Hace el intercambio de las posiciones 'i' y 'j' en los arreglos 
+     * enviados como parametros.
+     * @param arreglo
+     * @param arregloEtiquetas
+     * @param i
+     * @param j 
+     */
     public void intercambiar(int[] arreglo, JLabel[] arregloEtiquetas, int i, int j)
     {
         dormir();
@@ -37,6 +54,12 @@ public class Seleccion
         cambiarANormal(arregloEtiquetas[i], arregloEtiquetas[j]);
     }/*Fin del metodo intercambiar*/
     
+    /**
+     * Recibe como parametros los arreglos a los que se va a ordenar de menor a
+     * mayor, mediante el algoritmo de seleccion.
+     * @param arreglo
+     * @param arregloEtiquetas 
+     */
     public void ordenarSeleccion(int[] arreglo, JLabel[] arregloEtiquetas)
     {
         int indiceMenor;
@@ -64,6 +87,10 @@ public class Seleccion
         }
     }/*Fin del metodo ordenarSeleccion*/
     
+    /**
+     * Duerme el hilo por el tiempo especificado dentro del metodo sleep de
+     * la clase Hilo_Ejecucion. Para este caso son 2 segundos.
+     */
     public void dormir()
     {
         try
@@ -76,32 +103,36 @@ public class Seleccion
         }
     }//Fin del metodo dormir.
     
+    /**
+     * Recibe dos etiquetas por parametros, a las cuales se les hara un cambio 
+     * de color tanto en la letra como en el color de fondo. El texto de la
+     * etiqueta cambiaraa blanco mientras que el fondo a rojo.
+     * 
+     * @param etiqueta1
+     * @param etiqueta2 
+     */
     public void cambiarARojo(JLabel etiqueta1, JLabel etiqueta2)
     {
         etiqueta1.setBackground(Color.red);
         etiqueta2.setBackground(Color.red);
         etiqueta1.setForeground(Color.white);
         etiqueta2.setForeground(Color.white);
-    }
+    }//Fin del metodo cambiarARojo.
+    
+    /**
+     * Recibe dos etiquetas y les cambia el color de fondo y el texto. El color
+     * de fondo sera el mismo que tienen los paneles y JFrame por defecto, mientras
+     * que el color de la letra sera negro. Es decir, las volvera al color original
+     * que traen por defecto.
+     * 
+     * @param etiqueta1
+     * @param etiqueta2 
+     */
     public void cambiarANormal(JLabel etiqueta1, JLabel etiqueta2)
     {
         etiqueta1.setBackground(new Color(214,217,223));
         etiqueta2.setBackground(new Color(214,217,223));
         etiqueta1.setForeground(Color.black);
         etiqueta2.setForeground(Color.black);
-    }
-    public static void imprimir(int[] arreglo)
-    {
-        int tamanio = arreglo.length; //Tamanio del arreglo
-        
-        for(int contador=0; contador<tamanio; contador++)
-        {
-            mostrarMensaje("Valor en [" + contador + "] es: " + arreglo[contador]);
-        }
-    }/*Fin del metodo imprimir*/
-    
-    public static void mostrarMensaje(String mensaje)
-    {
-        System.out.println(mensaje);
-    }/*Fin del metodo mostrarMensaje*/
+    }//Fin del metodo cambiarANormal.
 }/*Fin de la clase Seleccion*/

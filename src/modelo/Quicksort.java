@@ -10,7 +10,7 @@ public class Quicksort
     {
     }/*Fin del constructor.*/
     
-    public static void ordenarQuicksort(int[] vector, int izq, int der)
+    public void ordenarQuicksort(int[] vector, int izq, int der)
     {
         int pivote = vector[izq]; //Tomamos el primer elemento como pivote.
         int i = izq; //i realiza la busqueda de izquierda a derecha.
@@ -46,19 +46,4 @@ public class Quicksort
             ordenarQuicksort(vector, d+1, der);
         }
     }/*Fin del metodo quicksort*/
-    
-    public static void imprimir(int[] arreglo)
-    {
-        int tamanio = arreglo.length; //Tamanio del arreglo
-        
-        for(int contador=0; contador<tamanio; contador++)
-        {
-            mostrarMensaje("Valor en [" + contador + "] es: " + arreglo[contador]);
-        }
-    }/*Fin del metodo imprimir*/
-    
-    public static void mostrarMensaje(String mensaje)
-    {
-        System.out.println(mensaje);
-    }/*Fin del metodo mostrarMensaje*/
 }/*Fin de la clase Quicksort*/
