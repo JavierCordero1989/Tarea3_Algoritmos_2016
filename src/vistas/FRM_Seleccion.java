@@ -14,13 +14,15 @@ import javax.swing.JLabel;
  */
 public class FRM_Seleccion extends javax.swing.JDialog 
 {
-    private FRM_Principal parent;
-    private int[] arregloDatos;
-    private Hilo_Ejecucion hilo;
-    private JLabel[] arregloEtiquetas;
+    private FRM_Principal parent; //Interfaz principal.
+    private int[] arregloDatos; //Datos ingresados por el usuario.
+    private Hilo_Ejecucion hilo; //Hilo que ejecuta las pausas para los cambios graficos
+    private JLabel[] arregloEtiquetas; //Etiquetas con el valor en forma de texto de los datos que ingresa el usuario.
     
     /**
-     * Creates new form FRM_Seleccion
+     * Constructor de la clase que inicializa los elementos de la interfaz.
+     * @param parent
+     * @param modal 
      */
     public FRM_Seleccion(FRM_Principal parent, boolean modal) 
     {
@@ -28,29 +30,35 @@ public class FRM_Seleccion extends javax.swing.JDialog
         initComponents();
         this.parent = parent;
         
-        setLocationRelativeTo(null);
-        setTitle("Algoritmo de ordenamiento por Seleccion");
-        arregloDatos = parent.devolverArreglo();
+        setLocationRelativeTo(null); //Acomoda la ventana en el centro de la pantalla de la PC.
+        setTitle("Algoritmo de ordenamiento por Seleccion"); //Titulo de la interfaz.
+        arregloDatos = parent.devolverArreglo(); //Obtiene el arreglo de los datos que ingreso el usuario.
         
-        llenarArregloEtiquetas();
-        cambiarTextos();
+        llenarArregloEtiquetas(); //Llena un arreglo con las etiquetas creadas manualmente.
+        cambiarTextos(); //Cambia el texto de las etiquetas por los valores que el usuario ingreso.
         
         label_mensaje.setVisible(false);
         hilo = new Hilo_Ejecucion(this, arregloDatos, arregloEtiquetas);
         
-        hilo.start();
-        
+        hilo.start(); //Inicia la ejecucion del hilo.        
     }//Fin del constructor.
 
+    /**
+     * Muestra un mensaje en la interfaz por medio de la etiqueta label_mensaje.
+     */
     public void mostrarMensaje()
     {
         label_mensaje.setVisible(true);
     }
     
+    /**
+     * Llena un arreglo local con las etiquetas creadas manualmente en la 
+     * interfaz para presentar los cambios graficos del algoritmo.
+     */
     public void llenarArregloEtiquetas()
     {
-        int tamanio = arregloDatos.length;
-        arregloEtiquetas = new JLabel[tamanio];
+        int tamanio = arregloDatos.length; //Cantidad de datos que ingreso el usuario, 10 en total.
+        arregloEtiquetas = new JLabel[tamanio]; //Inicializa el arreglo de las etiquetas.
         
         arregloEtiquetas[0] = arreglo_0;
         arregloEtiquetas[1] = arreglo_1;
@@ -64,6 +72,10 @@ public class FRM_Seleccion extends javax.swing.JDialog
         arregloEtiquetas[9] = arreglo_9;
     }//Fin del metodo llenarArregloEtiquetas.
     
+    /**
+     * Cambia el texto de las etiquetas en la interfaz, por los datos que se
+     * ingresaron por el usuario desde el inicio.
+     */
     public void cambiarTextos()
     {
         int tamanio = arregloDatos.length;
@@ -219,6 +231,10 @@ public class FRM_Seleccion extends javax.swing.JDialog
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Reinicia la interfaz del menu principal si esta ventana se cierra.
+     * @param evt 
+     */
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         this.parent.reiniciar();
     }//GEN-LAST:event_formWindowClosing
@@ -236,4 +252,4 @@ public class FRM_Seleccion extends javax.swing.JDialog
     private javax.swing.JLabel arreglo_9;
     private javax.swing.JLabel label_mensaje;
     // End of variables declaration//GEN-END:variables
-}
+}//Fin de la clase FRM_Seleccion.
