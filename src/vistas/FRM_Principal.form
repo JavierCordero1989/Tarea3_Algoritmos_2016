@@ -44,7 +44,7 @@
                           <Component id="radioBoton_Quicksort" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="btn_Ver" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="144" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="150" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -54,7 +54,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Component id="label_Titulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="radioBoton_Intercambio" min="-2" max="-2" attributes="0"/>
@@ -70,7 +70,7 @@
               <Component id="radioBoton_Burbuja" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btn_Ver" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -78,6 +78,9 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="label_Titulo">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Berlin Sans FB Demi" size="24" style="0"/>
+        </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Elija el algoritmo que desea ver"/>
       </Properties>
@@ -87,6 +90,9 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="grupoBotones"/>
         </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Berlin Sans FB Demi" size="24" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Intercambio"/>
       </Properties>
     </Component>
@@ -94,6 +100,9 @@
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="grupoBotones"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Berlin Sans FB Demi" size="24" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Seleccion"/>
       </Properties>
@@ -103,6 +112,9 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="grupoBotones"/>
         </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Berlin Sans FB Demi" size="24" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Shell"/>
       </Properties>
     </Component>
@@ -110,6 +122,9 @@
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="grupoBotones"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Berlin Sans FB Demi" size="24" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Merge"/>
       </Properties>
@@ -119,11 +134,17 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="grupoBotones"/>
         </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Berlin Sans FB Demi" size="24" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Quicksort"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btn_Ver">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Berlin Sans FB Demi" size="24" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Ver algoritmo"/>
       </Properties>
       <Events>
@@ -134,6 +155,9 @@
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="grupoBotones"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Berlin Sans FB Demi" size="24" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Burbuja"/>
       </Properties>

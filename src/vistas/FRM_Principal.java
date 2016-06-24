@@ -92,24 +92,31 @@ public class FRM_Principal extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        label_Titulo.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
         label_Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label_Titulo.setText("Elija el algoritmo que desea ver");
 
         grupoBotones.add(radioBoton_Intercambio);
+        radioBoton_Intercambio.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
         radioBoton_Intercambio.setText("Intercambio");
 
         grupoBotones.add(radioBoton_Seleccion);
+        radioBoton_Seleccion.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
         radioBoton_Seleccion.setText("Seleccion");
 
         grupoBotones.add(radioBoton_Shell);
+        radioBoton_Shell.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
         radioBoton_Shell.setText("Shell");
 
         grupoBotones.add(radioBoton_Merge);
+        radioBoton_Merge.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
         radioBoton_Merge.setText("Merge");
 
         grupoBotones.add(radioBoton_Quicksort);
+        radioBoton_Quicksort.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
         radioBoton_Quicksort.setText("Quicksort");
 
+        btn_Ver.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
         btn_Ver.setText("Ver algoritmo");
         btn_Ver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +125,7 @@ public class FRM_Principal extends javax.swing.JFrame
         });
 
         grupoBotones.add(radioBoton_Burbuja);
+        radioBoton_Burbuja.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
         radioBoton_Burbuja.setText("Burbuja");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -139,13 +147,13 @@ public class FRM_Principal extends javax.swing.JFrame
                             .addComponent(radioBoton_Merge)
                             .addComponent(radioBoton_Quicksort)
                             .addComponent(btn_Ver))
-                        .addGap(0, 144, Short.MAX_VALUE)))
+                        .addGap(0, 150, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(40, 40, 40)
                 .addComponent(label_Titulo)
                 .addGap(18, 18, 18)
                 .addComponent(radioBoton_Intercambio)
@@ -161,7 +169,7 @@ public class FRM_Principal extends javax.swing.JFrame
                 .addComponent(radioBoton_Burbuja)
                 .addGap(18, 18, 18)
                 .addComponent(btn_Ver)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
