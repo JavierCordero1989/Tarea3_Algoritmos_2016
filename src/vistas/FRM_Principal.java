@@ -188,7 +188,8 @@ public class FRM_Principal extends javax.swing.JFrame
         }
         if(radioBoton_Quicksort.isSelected())
         {
-            
+            FRM_Quicksort quicksort = new FRM_Quicksort(this, true);
+            quicksort.setVisible(true);
         }
         if(radioBoton_Shell.isSelected())
         {

@@ -4,10 +4,12 @@ import static java.lang.Thread.sleep;
 import javax.swing.JLabel;
 import modelo.Burbuja;
 import modelo.Intercambio;
+import modelo.Quicksort;
 import modelo.Seleccion;
 import modelo.Shell;
 import vistas.FRM_Burbuja;
 import vistas.FRM_Intercambio;
+import vistas.FRM_Quicksort;
 import vistas.FRM_Seleccion;
 import vistas.FRM_Shell;
 
@@ -37,6 +39,10 @@ public class Hilo_Ejecucion extends Thread
     /*VARIABLES PARA EL ALGORITMO DE INTERCAMBIO*/
     private FRM_Intercambio ventana_Intercambio = null;
     private Intercambio intercambio;
+    
+    /*VARIABLES PARA EL ALGORITMO DE QUICKSORT*/
+    private FRM_Quicksort ventana_Quicksort;
+    private Quicksort quicksort;
     
     /**
      * Constructor utilizado para ejecutar los tiempos del algoritmo Shell para 
@@ -114,13 +120,53 @@ public class Hilo_Ejecucion extends Thread
         intercambio = new Intercambio(this);
     }//Fin del cosntructor.
     
+    /**
+     * Constructor utilizado para ejecutar los tiempos del algoritmo Quicksort para 
+     * ordenar.
+     * @param ventana_Quicksort es la interfaz que ejecuta los cambios graficos.
+     * @param arregloDatos datos con los valores enteros ingresados por el usuario.
+     * @param arregloEtiquetas etiquetas que cambian cuando el algoritmo lo requiere.
+     */
+    public Hilo_Ejecucion(FRM_Quicksort ventana_Quicksort, int[] arregloDatos, JLabel[] arregloEtiquetas)
+    {
+        this.ventana_Quicksort = ventana_Quicksort;
+        
+        ejecuta = true;
+        
+        this.arregloDatos = arregloDatos;
+        this.arregloEtiquetas = arregloEtiquetas;
+        
+        quicksort = new Quicksort(this);
+    }//Fin del constructor.
+    
     public void run()
     {
         /**
          * Ejecuta la sentencia solo si se ha iniciado la interfaz para el 
          * ordenamiento de Intercambio.
          */
-        if(ventana_Intercambio != null)
+        if(ventana_Quicksort != null)
+        {
+            while(ejecuta)
+            {
+                try
+                {
+                    sleep(1000);
+                    quicksort.ordenarQuicksort(arregloEtiquetas, arregloDatos, 0, arregloDatos.length-1);
+                    ejecuta = false; //Termina el ciclo y detiene el hilo.
+                }
+                catch(Exception exception)
+                {
+                    System.out.println("Error en el hilo de Quicksort.\nExcepcion: " + exception);
+                }
+            }
+            ventana_Quicksort.mostrarMensaje();
+        }
+        /**
+         * Ejecuta la sentencia solo si se ha iniciado la interfaz para el 
+         * ordenamiento de Intercambio.
+         */
+        else if(ventana_Intercambio != null)
         {
             while(ejecuta)
             {
