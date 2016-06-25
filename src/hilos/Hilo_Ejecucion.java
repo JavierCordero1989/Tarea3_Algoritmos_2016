@@ -3,9 +3,11 @@ package hilos;
 import static java.lang.Thread.sleep;
 import javax.swing.JLabel;
 import modelo.Burbuja;
+import modelo.Intercambio;
 import modelo.Seleccion;
 import modelo.Shell;
 import vistas.FRM_Burbuja;
+import vistas.FRM_Intercambio;
 import vistas.FRM_Seleccion;
 import vistas.FRM_Shell;
 
@@ -31,6 +33,10 @@ public class Hilo_Ejecucion extends Thread
     /*VARIABLES PARA EL ALGORITMO DE BURBUJA*/
     private FRM_Burbuja ventana_burbuja = null;
     private Burbuja burbuja;
+    
+    /*VARIABLES PARA EL ALGORITMO DE INTERCAMBIO*/
+    private FRM_Intercambio ventana_Intercambio = null;
+    private Intercambio intercambio;
     
     /**
      * Constructor utilizado para ejecutar los tiempos del algoritmo Shell para 
@@ -87,15 +93,55 @@ public class Hilo_Ejecucion extends Thread
         this.arregloEtiquetas = arregloEtiquetas;
         
         burbuja = new Burbuja(this);
+    }//Fin del constructor.
+    
+    /**
+     * Constructor utilizado para ejecutar los tiempos del algoritmo de Seleccion
+     * para ordenar.
+     * @param ventana_Intercambio es la interfaz que ejecuta los cambios graficos.
+     * @param arregloDatos datos con los valores enteros ingresados por el usuario.
+     * @param arregloEtiquetas etiquetas que cambian cuando el algoritmo lo requiere.
+     */
+    public Hilo_Ejecucion(FRM_Intercambio ventana_Intercambio, int[] arregloDatos, JLabel[] arregloEtiquetas)
+    {
+        this.ventana_Intercambio = ventana_Intercambio;
+        
+        ejecuta = true;
+        
+        this.arregloDatos = arregloDatos;
+        this.arregloEtiquetas = arregloEtiquetas;
+        
+        intercambio = new Intercambio(this);
     }//Fin del cosntructor.
     
     public void run()
     {
         /**
          * Ejecuta la sentencia solo si se ha iniciado la interfaz para el 
+         * ordenamiento de Intercambio.
+         */
+        if(ventana_Intercambio != null)
+        {
+            while(ejecuta)
+            {
+                try
+                {
+                    sleep(1000);
+                    intercambio.ordenarIntercambio(arregloDatos, arregloEtiquetas);
+                    ejecuta = false; //Termina el ciclo y detiene el hilo.
+                }
+                catch(Exception exception)
+                {
+                    System.out.println("Error en el hilo de Intercambio.\nExcepcion: " + exception);
+                }
+            }
+            ventana_Intercambio.mostrarMensaje();
+        }
+        /**
+         * Ejecuta la sentencia solo si se ha iniciado la interfaz para el 
          * ordenamiento de Burbuja.
          */
-        if(ventana_burbuja != null)
+        else if(ventana_burbuja != null)
         {
             while(ejecuta)
             {

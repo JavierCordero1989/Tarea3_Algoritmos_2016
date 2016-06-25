@@ -178,7 +178,8 @@ public class FRM_Principal extends javax.swing.JFrame
     private void btn_VerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerActionPerformed
         if(radioBoton_Intercambio.isSelected())
         {
-            
+            FRM_Intercambio intercambio = new FRM_Intercambio(this, true);
+            intercambio.setVisible(true);
         }
         if(radioBoton_Seleccion.isSelected())
         {
