@@ -39,6 +39,7 @@ public class Burbuja
         
         for(int pasada=0; (pasada<tamanio-1 && interruptor!=0); pasada++)
         {
+            dormir(500);
             hilo.mostrarPasadas(pasada);
             /*bucle externo controla la cantidad de pasadas. */
             interruptor = 0;
@@ -80,6 +81,18 @@ public class Burbuja
         try
         {
             Hilo_Ejecucion.sleep(2000);
+        }
+        catch(Exception exception)
+        {
+            System.out.println("Error en la clase Burbuja con el hilo.\nExcepcion: " + exception);
+        }
+    }//Fin del metodo dormir.
+    
+    public void dormir(long tiempo)
+    {
+        try
+        {
+            Hilo_Ejecucion.sleep(tiempo);
         }
         catch(Exception exception)
         {

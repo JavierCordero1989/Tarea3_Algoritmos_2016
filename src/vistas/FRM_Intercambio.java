@@ -50,8 +50,13 @@ public class FRM_Intercambio extends javax.swing.JDialog {
     public void mostrarMensaje()
     {
         label_mensaje.setVisible(true);
+        label_mensaje.setText("El algoritmo de Intercambio ha concluido");
     }
-    
+    public void mostrarMensaje(String mensaje)
+    {
+        label_mensaje.setVisible(true);
+        label_mensaje.setText(mensaje);
+    }
     /**
      * Llena un arreglo local con las etiquetas creadas manualmente en la 
      * interfaz para presentar los cambios graficos del algoritmo.

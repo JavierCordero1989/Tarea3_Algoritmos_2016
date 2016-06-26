@@ -41,6 +41,7 @@ public class Intercambio
     {
         for(int i=0; i<arreglo.length-1; i++)
         {
+            hilo.mostrarPasadasIntercambio(i);
             //Situa minimo de arreglo[i+1]...arreglo[n-1] en arreglo[i]
             for(int j=(i+1); j<arreglo.length; j++)
             {

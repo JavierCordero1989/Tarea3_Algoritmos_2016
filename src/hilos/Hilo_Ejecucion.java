@@ -102,7 +102,7 @@ public class Hilo_Ejecucion extends Thread
     }//Fin del constructor.
     
     /**
-     * Constructor utilizado para ejecutar los tiempos del algoritmo de Seleccion
+     * Constructor utilizado para ejecutar los tiempos del algoritmo de Intercambio
      * para ordenar.
      * @param ventana_Intercambio es la interfaz que ejecuta los cambios graficos.
      * @param arregloDatos datos con los valores enteros ingresados por el usuario.
@@ -258,5 +258,10 @@ public class Hilo_Ejecucion extends Thread
     public void mostrarPasadas(int pasada)
     {
         ventana_burbuja.mostrarMensaje("Pasada: " + (pasada+1));
+    }
+    
+    public void mostrarPasadasIntercambio(int pasada)
+    {
+        ventana_Intercambio.mostrarMensaje("Pasada: " + (pasada+1));
     }
 }//Fin de la clase Hilo_Ejecucion.

@@ -31,7 +31,7 @@ public class FRM_Quicksort extends javax.swing.JDialog
         
         this.parent = parent;
         
-        setTitle("Ordenamiento por Intercambio");
+        setTitle("Ordenamiento Quicksort");
         setLocationRelativeTo(null);
         
         arregloDatos = parent.devolverArreglo(); //Obtiene el arreglo de los datos que ingreso el usuario.
