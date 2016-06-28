@@ -1,7 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Tarea #3: algoritmos de ordenamiento.
+ * Integrantes: Llasuara Peraza, Alexandra Elizondo y Javier Cordero.
+ * Profesor: Juan Carlos Arias.
+ * Curso: Algoritmos y estructuras de datos.
+ * Universidad de Costa Rica - Sede el Pacifico Arnoldo Ferreto Segura.
+ * I semestre, 2016.
  */
 package vistas;
 
