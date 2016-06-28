@@ -1,7 +1,6 @@
 package modelo;
 
 import hilos.Hilo_Ejecucion;
-import hilos.Hilo_Shell;
 import java.awt.Color;
 import javax.swing.JLabel;
 
@@ -120,7 +119,7 @@ public class Shell
     {
         try 
         {
-            Hilo_Shell.sleep(2000);//Duerme durante 2 segundos.
+            Hilo_Ejecucion.sleep(2000);//Duerme durante 2 segundos.
         }
         catch (InterruptedException ex)
         {

@@ -52,6 +52,10 @@ public class FRM_Intercambio extends javax.swing.JDialog {
         label_mensaje.setVisible(true);
         label_mensaje.setText("El algoritmo de Intercambio ha concluido");
     }
+    /**
+     * Muestra en la etiqueta label_mensaje el texto especificado por parametro
+     * @param mensaje 
+     */
     public void mostrarMensaje(String mensaje)
     {
         label_mensaje.setVisible(true);

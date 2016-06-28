@@ -14,31 +14,68 @@ import javax.swing.JOptionPane;
  */
 public class FRM_Principal extends javax.swing.JFrame
 {
+    /**
+     * ArrayList para copiar los datos que se ingresaran.
+     */
     private ArrayList<Integer> numeros;
     
+    /**
+     * Datos que se ingresaran ya sea por el usuario, o de forma automatica por el programa.
+     */
     private int[] arregloDatos;
     
+    /**
+     * Metodo constructor de la clase.
+     */
     public FRM_Principal() 
     {
         initComponents();
-        arregloDatos = new int[]{58, 12, 0, 98, 30, 2, 7, 41, 45, 19};
-        numeros = new ArrayList<>();
-        llenarArrayList();
         
-        //insertarDatos();
+        /**
+         * Pregunta al usuario si desea ingresar los datos el uno a uno, o si
+         * prefiere que el programa lo haga de forma manual.
+         */
+        int opcion = Integer.parseInt(JOptionPane.showInputDialog(null, "Elija una opcion:\n1 - Caso de prueba interno\n2 - Ingresar manualmente los numeros a ordenar", "", JOptionPane.PLAIN_MESSAGE));
+        
+        /**
+         * Si la opcion es 1, lo hara de forma manual, de lo contrario, le 
+         * solicitara los datos al usuario uno a uno hasta completar los diez numeros
+         * necesarios para el arreglo.
+         */
+        if(opcion == 1)
+        {
+            arregloDatos = new int[]{58, 12, 0, 98, 30, 2, 7, 41, 45, 19};
+            numeros = new ArrayList<>();
+            
+            /**
+             * for mejorado para copiar los datos del arreglo en el ArrayList
+             * numeros.
+             */
+            for(int n : arregloDatos)
+            {
+                numeros.add(n);
+            }
+        }
+        else
+        {
+            /**
+             * Pide los datos al usuario
+             */
+            insertarDatos();
+        }
+        
+        /**
+         * Reinicia el arreglo a los datos insertados originalmente, es decir,
+         * los desordena de nuevo.
+         */
         reiniciar();
         setLocationRelativeTo(null);
     }//Fin del constructor.
     
-    public void llenarArrayList()
-    {
-        int tamanio = arregloDatos.length;
-        
-        for(int i=0; i<tamanio; i++)
-        {
-            numeros.add(arregloDatos[i]);
-        }
-    }
+    /**
+     * Vuelve los datos del arregloDatos a su origen, es decir, de manera desordenada
+     * usando el Arraylist.
+     */
     public void reiniciarArreglo()
     {
         int tamanio = numeros.size();
@@ -47,25 +84,75 @@ public class FRM_Principal extends javax.swing.JFrame
         {
             arregloDatos[i] = numeros.get(i);
         }
-    }
+    }//Fin del metodo reiniciarArreglo.
+    
+    /**
+     * Solicita los datos al usuario uno por uno, hasta completar los diez. Los
+     * datos seran los que los algoritmos usaran para ordenar.
+     */
     public void insertarDatos()
     {
+        /**
+         * Inicializa el arreglo y el ArrayList.
+         */
         arregloDatos = new int[10];
+        numeros = new ArrayList<>();
+        
+        /**
+         * Obtiene el tamano del arreglo de datos, que es de 10 elementos.
+         */
         int tamanio = arregloDatos.length;
         
-        for(int contador=0; contador<tamanio; contador++)
+        /**
+         * Variable que aumenta conforme el usuario ingrese los datos.
+         */
+        int inserta = 0;
+        
+        /**
+         * Ciclo que se repetira hasta que todos los datos esten insertados
+         * dentro del arreglo.
+         */
+        while(inserta < tamanio)
         {
-            arregloDatos[contador] = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el dato #" + (contador+1), "", JOptionPane.PLAIN_MESSAGE));
+            /**
+             * Bloque try-catch para procesar si el usuario ingresa una letra en vez de un numero entero,
+             * y el programa no falle y pueda seguir su ejecucion normalmente.
+             */
+            try
+            {
+                /**
+                 * Solicita los datos al usuario, los agrega al ArrayList y aumenta
+                 * la variable inserta en 1, pero cabe decir, que si el dato
+                 * ingresado por el usuario esta mal, no se agregara al ArrayList
+                 * ni se aumentara la variable inserta. Esto para poder volver
+                 * a solicitar el dato ya agregarlo correctamente.
+                 */
+                arregloDatos[inserta] = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el dato #" + (inserta+1), "", JOptionPane.PLAIN_MESSAGE));
+                numeros.add(arregloDatos[inserta]);
+                inserta++;
+            }
+            catch(NumberFormatException exception)
+            {
+                JOptionPane.showMessageDialog(null, "Ha ingresado un numero incorrecto", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
         }
-        llenarArrayList();
     }//Fin del metodo insertarDatos.
     
+    /**
+     * Limpia el grupo de botones, para que se pueda seleccionar otra opcion, 
+     * ademas reinicia el arreglo de datos.
+     */
     public void reiniciar()
     {
         grupoBotones.clearSelection();
         reiniciarArreglo();
     }//Fin del metodo reiniciar.
     
+    /**
+     * Devuelve el arreglo de datos que contiene los numeros enteros ingresados 
+     * por el usuario.
+     * @return el arreglo de los datos.
+     */
     public int[] devolverArreglo()
     {
         return arregloDatos;
@@ -175,6 +262,11 @@ public class FRM_Principal extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Maneja el evento del boton 'Ver algoritmo', y controla cual JRadioButton
+     * esta seleccionado para mostrar la ventana que corresponde a la opcion.
+     * @param evt 
+     */
     private void btn_VerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerActionPerformed
         if(radioBoton_Intercambio.isSelected())
         {
@@ -188,7 +280,9 @@ public class FRM_Principal extends javax.swing.JFrame
         }
         if(radioBoton_Quicksort.isSelected())
         {
-            FRM_Quicksort quicksort = new FRM_Quicksort(this, true);
+//            FRM_Quicksort quicksort = new FRM_Quicksort(this, true);
+//            quicksort.setVisible(true);
+            FRM_VentanaQuicksort quicksort = new FRM_VentanaQuicksort(this);
             quicksort.setVisible(true);
         }
         if(radioBoton_Shell.isSelected())

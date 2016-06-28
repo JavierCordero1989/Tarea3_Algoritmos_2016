@@ -2,7 +2,7 @@ package modelo;
 
 import hilos.Hilo_Ejecucion;
 import java.awt.Color;
-import javax.swing.JLabel;
+import javax.swing.JButton;
 
 /**
  *
@@ -11,133 +11,123 @@ import javax.swing.JLabel;
 public class Quicksort 
 {
     private Hilo_Ejecucion hilo;
+    private Color colorOriginal;
+    private int pasada = 0;
     
     public Quicksort(Hilo_Ejecucion hilo)
     {
         this.hilo = hilo;
+        colorOriginal = hilo.ventana.colorOriginal();
     }/*Fin del constructor.*/
     
-    public void ordenarQuicksort(JLabel[] etiquetas, int[] vector, int izq, int der)
+    public void quick(JButton[] botones, int[] vector, int primero, int ultimo)
     {
-        int pivote = vector[izq]; //Tomamos el primer elemento como pivote.
-        String pivoteText = etiquetas[izq].getText();
+        hilo.ventana.reiniciarTodo();
+        int i, j, central, pivote;
+        central = (primero + ultimo)/2;
         
-        dormir();
-        marcarPivote(etiquetas[izq]);
+        pivote = vector[central];
         
-        int i = izq; //i realiza la busqueda de izquierda a derecha.
-        int d = der; //d realiza la busqueda de derecha a izquierda.
-        int aux;
-        String text;
+        dormir_x_segundos(1000);
+        hilo.ventana.mostrarPivote("Pivote: " + pivote + ", pasada: " + (pasada));
+        botones[central].setBackground(Color.black);
         
-        while(i < d) //Mietras no se crucen las busquedas.
+        System.out.println("Pivote: " + pivote);
+        
+        dormir_x_segundos(1000);
+        i = primero;
+        j = ultimo;
+//        hilo.ventana.hacerInvisibles(i, j);
+        
+        dormir_x_segundos(1000);
+        do
         {
-            while(vector[d] > pivote) //Busca elemento menor que pivote. 
+            botones[i].setBackground(Color.green);
+            botones[j].setBackground(Color.green);
+            hilo.ventana.hacerVisibles(i, j);
+        
+            dormir_x_segundos(1000);
+            
+            while(vector[i] < pivote)
             {
-                d--;
-            }
-            while(vector[i] <= pivote && i < d) //Busca elemento mayor que pivote.
-            {
+                botones[i].setBackground(colorOriginal);
+                hilo.ventana.hacerInvisibles(i, j);
                 i++;
+                botones[i].setBackground(Color.green);
+                hilo.ventana.hacerVisibles(i, j);
+                dormir_x_segundos(1000);
+            }
+            dormir_x_segundos(1000);
+            
+            while(vector[j] > pivote)
+            {
+                botones[j].setBackground(colorOriginal);
+                hilo.ventana.hacerInvisibles(i, j);
+                j--;
+                botones[j].setBackground(Color.green);
+                hilo.ventana.hacerVisibles(i, j);
+                dormir_x_segundos(1000);
             }
             
-            if(i < d)
+            if(i<=j)
             {
-                dormir();
-                cambiarARojo(etiquetas[i], etiquetas[d]);
+                if(i==j)
+                {
+                    dormir_x_segundos(1000);
+                    botones[i].setBackground(colorOriginal);
+                    botones[j].setBackground(colorOriginal);
+                }
+                else
+                {
+                    dormir_x_segundos(1000);
+                    botones[i].setBackground(Color.red);
+                    botones[j].setBackground(Color.red);
+                }
                 
-                dormir();
-                aux = vector[i];
-                text = etiquetas[i].getText();
+                dormir_x_segundos(1000);
+                int aux = vector[i];
+                vector[i] = vector[j];
+                botones[i].setText(botones[j].getText());
+                vector[j] = aux;
+                botones[j].setText(""+aux);
                 
-                vector[i] = vector[d];
-                etiquetas[i].setText(etiquetas[d].getText());
+                dormir_x_segundos(1000);
+                botones[i].setBackground(colorOriginal);
+                botones[j].setBackground(colorOriginal);
                 
-                vector[d] = aux;
-                etiquetas[d].setText(text);
-                
-                dormir();
-                cambiarANormal(etiquetas[d], etiquetas[i]);
+                dormir_x_segundos(1000);
+                hilo.ventana.hacerInvisibles(i, j);
+                i++;
+                j--;
+                botones[i].setBackground(Color.green);
+                botones[j].setBackground(Color.green);
+                hilo.ventana.hacerVisibles(i, j);
             }
-        }
+        }while(i <= j);
         
-        dormir();
-        vector[izq] = vector[d]; //Se coloca el pivote en su lugar de forma que tendremos
-        etiquetas[izq].setText(etiquetas[d].getText());
+        System.out.println("Termino la pasada: " + pasada++);
+        botones[central].setBackground(colorOriginal);
         
-        vector[d] = pivote; // los menores a su izquierda y los mayores a su derecha.
-        etiquetas[d].setText(pivoteText);
-        
-//        dormir();
-//        desmarcarPivote(etiquetas[izq]);
-        
-        if(izq < d-1)
+        if(primero < j)
         {
-            ordenarQuicksort(etiquetas, vector, izq, d-1);
+            quick(botones, vector, primero, j);
         }
-        if(d+1 < der)
+        if(i < ultimo)
         {
-            ordenarQuicksort(etiquetas, vector, d+1, der);
+            quick(botones, vector, i, ultimo);
         }
-    }/*Fin del metodo quicksort*/
-    
-    /**
-     * Duerme el hilo por el tiempo especificado dentro del metodo sleep de
-     * la clase Hilo_Ejecucion. Para este caso son 2 segundos.
-     */
-    public void dormir()
-    {
-        try
-        {
-            Hilo_Ejecucion.sleep(1000);
-        }
-        catch(Exception exception)
-        {
-            System.out.println("Error en la clase Seleccion con el hilo.\nExcepcion: " + exception);
-        }
-    }//Fin del metodo dormir.
-    
-    public void marcarPivote(JLabel etiqueta)
-    {
-        etiqueta.setBackground(Color.black);
-        etiqueta.setForeground(Color.white);
-    }//Fin del metodo marcarPivote.
-    
-    public void desmarcarPivote(JLabel etiqueta)
-    {
-        etiqueta.setBackground(new Color(214,217,223));
-        etiqueta.setForeground(Color.black);
+        hilo.ventana.reiniciarTodo();
     }
-    /**
-     * Recibe dos etiquetas por parametros, a las cuales se les hara un cambio 
-     * de color tanto en la letra como en el color de fondo. El texto de la
-     * etiqueta cambiaraa blanco mientras que el fondo a rojo.
-     * 
-     * @param etiqueta1
-     * @param etiqueta2 
-     */
-    public void cambiarARojo(JLabel etiqueta1, JLabel etiqueta2)
-    {
-        etiqueta1.setBackground(Color.red);
-        etiqueta2.setBackground(Color.red);
-        etiqueta1.setForeground(Color.white);
-        etiqueta2.setForeground(Color.white);
-    }//Fin del metodo cambiarARojo.
     
-    /**
-     * Recibe dos etiquetas y les cambia el color de fondo y el texto. El color
-     * de fondo sera el mismo que tienen los paneles y JFrame por defecto, mientras
-     * que el color de la letra sera negro. Es decir, las volvera al color original
-     * que traen por defecto.
-     * 
-     * @param etiqueta1
-     * @param etiqueta2 
-     */
-    public void cambiarANormal(JLabel etiqueta1, JLabel etiqueta2)
+    public void dormir_x_segundos(long milis)
     {
-        etiqueta1.setBackground(new Color(214,217,223));
-        etiqueta2.setBackground(new Color(214,217,223));
-        etiqueta1.setForeground(Color.black);
-        etiqueta2.setForeground(Color.black);
-    }//Fin del metodo cambiarANormal.
+        try 
+        {
+            Hilo_Ejecucion.sleep(milis);
+        } 
+        catch (InterruptedException e) 
+        {
+            System.out.println("Error: " + e);
+        }
+    }
 }/*Fin de la clase Quicksort*/

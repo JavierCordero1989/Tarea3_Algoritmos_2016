@@ -61,7 +61,7 @@ public class Intercambio
     {
         try
         {
-            Hilo_Ejecucion.sleep(1000);
+            Hilo_Ejecucion.sleep(2000);
         }
         catch(Exception exception)
         {

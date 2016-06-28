@@ -1,6 +1,6 @@
 package hilos;
 
-import static java.lang.Thread.sleep;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import modelo.Burbuja;
 import modelo.Intercambio;
@@ -9,9 +9,9 @@ import modelo.Seleccion;
 import modelo.Shell;
 import vistas.FRM_Burbuja;
 import vistas.FRM_Intercambio;
-import vistas.FRM_Quicksort;
 import vistas.FRM_Seleccion;
 import vistas.FRM_Shell;
+import vistas.FRM_VentanaQuicksort;
 
 /**
  *
@@ -41,8 +41,10 @@ public class Hilo_Ejecucion extends Thread
     private Intercambio intercambio;
     
     /*VARIABLES PARA EL ALGORITMO DE QUICKSORT*/
-    private FRM_Quicksort ventana_Quicksort;
-    private Quicksort quicksort;
+    private JButton[] botones;
+    private int tamanio;
+    public FRM_VentanaQuicksort ventana = null;
+    private Quicksort quicksort1;
     
     /**
      * Constructor utilizado para ejecutar los tiempos del algoritmo Shell para 
@@ -121,38 +123,43 @@ public class Hilo_Ejecucion extends Thread
     }//Fin del cosntructor.
     
     /**
-     * Constructor utilizado para ejecutar los tiempos del algoritmo Quicksort para 
-     * ordenar.
-     * @param ventana_Quicksort es la interfaz que ejecuta los cambios graficos.
-     * @param arregloDatos datos con los valores enteros ingresados por el usuario.
-     * @param arregloEtiquetas etiquetas que cambian cuando el algoritmo lo requiere.
+     * Constructor utilizado para ejecutar los tiempos del algoritmo Quicksort
+     * para ordenar.
+     * @param ventana es la interfaz que ejecuta los cambios graficos.
+     * @param botones botones que cambian cuando el algoritmo lo requiere.
+     * @param datos datos con los valores enteros ingresados por el usuario.
      */
-    public Hilo_Ejecucion(FRM_Quicksort ventana_Quicksort, int[] arregloDatos, JLabel[] arregloEtiquetas)
+    public Hilo_Ejecucion(FRM_VentanaQuicksort ventana, JButton[] botones, int[] datos)
     {
-        this.ventana_Quicksort = ventana_Quicksort;
+        this.botones = botones;
+        this.arregloDatos = datos;
+        tamanio = datos.length;
         
         ejecuta = true;
+        this.ventana = ventana;
         
-        this.arregloDatos = arregloDatos;
-        this.arregloEtiquetas = arregloEtiquetas;
-        
-        quicksort = new Quicksort(this);
-    }//Fin del constructor.
+        quicksort1 = new Quicksort(this);
+    }
     
     public void run()
     {
         /**
          * Ejecuta la sentencia solo si se ha iniciado la interfaz para el 
-         * ordenamiento de Intercambio.
+         * ordenamiento de Quicksort.
          */
-        if(ventana_Quicksort != null)
+        if(ventana != null)
         {
             while(ejecuta)
             {
                 try
                 {
-                    sleep(1000);
-                    quicksort.ordenarQuicksort(arregloEtiquetas, arregloDatos, 0, arregloDatos.length-1);
+                    for(int i=0; i<tamanio; i++)
+                    {
+                        sleep(100);
+                        botones[i].setText("" + arregloDatos[i]);
+                    }
+                    
+                    quicksort1.quick(botones, arregloDatos, 0, arregloDatos.length-1);
                     ejecuta = false; //Termina el ciclo y detiene el hilo.
                 }
                 catch(Exception exception)
@@ -160,7 +167,6 @@ public class Hilo_Ejecucion extends Thread
                     System.out.println("Error en el hilo de Quicksort.\nExcepcion: " + exception);
                 }
             }
-            ventana_Quicksort.mostrarMensaje();
         }
         /**
          * Ejecuta la sentencia solo si se ha iniciado la interfaz para el 
